@@ -1,0 +1,47 @@
+[package]
+edition = "2021"
+authors = ["Martin Durak>"]
+categories = [
+    "embedded",
+    "no-std",
+]
+description = "Board blinking template for STM32F407G"
+documentation = "https://docs.rs/crate/stm32f407g-disc"
+keywords = [
+    "arm",
+    "cortex-m",
+    "template",
+]
+license = "0BSD"
+name = "stm32f407g-disc"
+version = "0.0.1"
+readme = "README.md"
+
+[package.metadata.docs.rs]
+features = []
+targets = ["thumbv7em-none-eabihf"]
+
+[dependencies]
+cortex-m = "0.7.2"
+cortex-m-rt = "0.7.3"
+panic-halt = "0.2"
+
+[dependencies.embedded-hal]
+features = ["unproven"]
+version = "0.2"
+
+[dependencies.stm32f4xx-hal]
+default-features = false
+features = ["rt", "stm32f407"]
+version = "0.15.0"
+
+
+
+
+[profile.dev]
+debug = true
+
+[profile.release]
+debug = true
+lto = true
+opt-level = "s"
